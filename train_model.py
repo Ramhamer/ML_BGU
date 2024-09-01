@@ -58,7 +58,6 @@ def validate_model(model, val_loader, criterion, device ,covidclass):
     return val_loss ,val_acc
 
 
-
 def update_plot_epoch(train_accuracy, val_accuracy, train_loss, val_loss, num_epochs, epoch,save_dir):
 
     global train_acc_line, val_acc_line, train_loss_line, val_loss_line
@@ -67,7 +66,6 @@ def update_plot_epoch(train_accuracy, val_accuracy, train_loss, val_loss, num_ep
         plt.ion()
         plt.figure(figsize=(12, 6), num='Epoch Metrics')
         
-
         # Subplot for accuracy
         plt.subplot(1, 2, 1)
         train_acc_line, = plt.plot([], [], 'blue', label='Training Accuracy')
@@ -129,7 +127,6 @@ def update_plot_epoch(train_accuracy, val_accuracy, train_loss, val_loss, num_ep
     plt.savefig(save_dir)
 
 
-
 #Settings
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -150,9 +147,7 @@ model = Xception()
 optimizer = optim.Adam(model.parameters())
 criterion = nn.BCEWithLogitsLoss()
 
-
 # Training loop
-
 num_iter = len(train_dataset)/batch_size        #how many batches there is in 1 epoch
 train_losses = []
 val_losses = []
@@ -226,6 +221,16 @@ with tqdm(total=num_epochs, desc="Training Progress",ncols=150, unit='epoch') as
         #         break
         
 
+'''
+        #לשמור פלוטים והרצות
+        #לכתוב הסברים על כל פונקציה
+        בסוף: להריץ את הקובץ טסט ולראות שהוא לא לומד ממנו ולא שומר את המשקולות שלו
+        לבדוק ארכיטקטורה אחרי שהרצנו כמה אפוקים
+        לבחור את הגרסא הכי טובה של הארכיטקטורה (אחרי 20 אפוקים ואז ברח לאובר פיט - אז לעצור שם ולקחת את המשוקולת ובלה בלה בלה..
+        עיצובים אחרונים (קונפיוזן מטריקס, להסתכל כל מה שניר רצה ולראות איפה מכניסים את זה)
+        )
+
+'''
 
 
 
